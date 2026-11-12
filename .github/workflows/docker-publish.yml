@@ -42,7 +42,7 @@ jobs:
           HOST: ${{ secrets.ORACLE_VM_HOST }}
           VM_USER: ${{ secrets.ORACLE_VM_USER }}
           SSH_KEY: ${{ secrets.ORACLE_VM_SSH_KEY }}
-          DEPLOY_DIR: ${{ vars.DEPLOY_DIR || '/opt/asoe-web' }}
+          DEPLOY_DIR: ${{ vars.DEPLOY_DIR || '/home/ubuntu/demos/asoe-web' }}
         run: |
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key

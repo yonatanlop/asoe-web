@@ -1,0 +1,17 @@
+# Se copia a /home/ubuntu/demos/asoe-web/ en la VM (mismo patrón que los demás demos).
+name: asoe-web
+
+services:
+  web:
+    image: ghcr.io/yonatanlop/asoe-web:latest
+    container_name: asoe-web
+    restart: unless-stopped
+    mem_limit: 64m
+    cpus: 0.25
+    networks:
+      - edge
+
+networks:
+  edge:
+    external: true
+    name: edge

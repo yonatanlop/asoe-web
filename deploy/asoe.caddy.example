@@ -1,0 +1,4 @@
+# Se copia a /home/ubuntu/edge-caddy/sites/asoe.caddy cambiando SUBDOMINIO por el de DuckDNS.
+SUBDOMINIO.duckdns.org {
+	reverse_proxy asoe-web:80
+}
