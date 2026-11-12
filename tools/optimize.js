@@ -40,7 +40,7 @@ async function logo() {
 
   // solo el águila (sin el texto inferior) para favicon: recorte superior ~78 %
   const meta = await sharp(logoColor).metadata();
-  const eagle = await sharp(logoColor).extract({ left: 0, top: 0, width: meta.width, height: Math.round(meta.height * 0.78) }).toBuffer();
+  const eagle = await sharp(logoColor).extract({ left: 0, top: 0, width: meta.width, height: Math.round(meta.height * 0.86) }).toBuffer();
   const sq = 512;
   const eagleSq = await sharp(eagle).resize({ width: sq - 40, height: sq - 40, fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).extend({ top: 20, bottom: 20, left: 20, right: 20, background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
   await sharp(eagleSq).resize(180, 180).png().toFile(path.join(OUT, 'brand', 'apple-touch-icon.png'));

@@ -41,7 +41,7 @@ const footer = () => `
 <footer class="site-footer">
   <div class="wrap foot-grid">
     <div>
-      <img src="assets/img/brand/logo-blanco.png" alt="${esc(site.nombre)}" width="110" height="170" loading="lazy">
+      <img src="assets/img/brand/logo-blanco.png" alt="${esc(site.nombre)}" width="110" height="173" loading="lazy">
     </div>
     <div>
       <h2>${esc(site.nombre)}</h2>
@@ -132,7 +132,7 @@ const pages = [
       <p class="lead">Organización gremial sin ánimo de lucro que reúne a los economistas egresados de la UPTC y promueve el debate económico a través de foros, conferencias y simposios.</p>
       <p class="actions"><a class="btn" href="nosotros.html">Conoce ASOE</a> <a class="btn btn-ghost" href="eventos.html">Ver eventos</a></p>
     </div>
-    <div class="hero-logo"><img src="assets/img/brand/logo-blanco.png" alt="Logo de ASOE: águila con las letras ASOE" width="300" height="464" fetchpriority="high"></div>
+    <div class="hero-logo"><img src="assets/img/brand/logo-blanco.png" alt="Logo de ASOE: águila con las letras ASOE" width="300" height="473" fetchpriority="high"></div>
   </div>
 </section>
 
