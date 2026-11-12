@@ -112,6 +112,7 @@ module.exports = {
       {
         titulo: 'Exaltación honorífica a nuestro colega Raúl Cañón, miembro del Consejo Directivo',
         fechaTexto: 'Fecha por confirmar',
+        fechaProvisional: true,
         lugar: 'Ceremonia «Edificando Futuro»',
         detalle: 'Reconocimiento a nuestro colega y miembro del Consejo Directivo en la ceremonia «Edificando Futuro».',
         imagen: foto('exaltacion-1', 1600, 748, 'Escenario de la ceremonia Edificando Futuro con el atril y los invitados'),
@@ -126,7 +127,8 @@ module.exports = {
       },
       {
         titulo: 'Panel 1: Balance y perspectiva económica de Colombia y Boyacá frente a los desafíos',
-        fechaTexto: 'Fecha por confirmar',
+        fechaTexto: '26 de agosto de 2026',
+        fechaProvisional: true, // PENDIENTE: ASOE debe confirmar la fecha exacta
         lugar: '',
         detalle: 'Panel de análisis sobre la situación económica de Colombia y Boyacá y los desafíos que enfrentan.',
         imagen: foto('panel1-2', 1600, 748, 'Panelistas y moderador en la mesa del Panel 1, con la pancarta de bienvenida de ASOE'),
@@ -138,7 +140,8 @@ module.exports = {
       },
       {
         titulo: 'Panel 2: Prospectiva económica y empresarial, qué viene para Colombia y Boyacá',
-        fechaTexto: 'Fecha por confirmar',
+        fechaTexto: '27 de agosto de 2026',
+        fechaProvisional: true, // PENDIENTE: ASOE debe confirmar la fecha exacta
         lugar: '',
         detalle: 'Panel sobre las perspectivas económicas y empresariales para Colombia y Boyacá.',
         imagen: foto('panel2-1', 1600, 748, 'Panelistas en la mesa del Panel 2, con la pancarta de ASOE'),

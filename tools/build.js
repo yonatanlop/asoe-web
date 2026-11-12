@@ -81,7 +81,7 @@ const eventCard = (ev) => `
 <article class="card event">
   <div class="card-img"><a href="${ev.imagen.full || ev.imagen.src}" data-lightbox data-w="${ev.imagen.w}" data-h="${ev.imagen.h}" aria-label="Ampliar: ${esc(ev.imagen.alt)}">${picture(ev.imagen, { sizes: '(min-width: 800px) 33vw, 100vw' })}</a></div>
   <div class="card-body">
-    <p class="meta">${esc(ev.fechaTexto)}${ev.lugar ? ` · ${esc(ev.lugar)}` : ''}</p>
+    <p class="meta">${esc(ev.fechaTexto)}${ev.lugar ? ` · ${esc(ev.lugar)}` : ''}${badge(ev.fechaProvisional)}</p>
     <h3>${esc(ev.titulo)}</h3>
     <p>${esc(ev.detalle)}</p>
   </div>
