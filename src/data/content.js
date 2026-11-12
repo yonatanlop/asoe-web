@@ -3,6 +3,9 @@
 
 const anioFundacion = 1981;
 
+// Foto de evento: miniatura (640 px) en la página y versión grande al ampliar.
+const foto = (id, w, h, alt) => ({ src: 'assets/img/eventos/' + id + '-sm.webp', full: 'assets/img/eventos/' + id + '.webp', w: 640, h: Math.round((640 * h) / w), alt });
+
 module.exports = {
   site: {
     nombre: 'Asociación de Economistas de la UPTC',
@@ -88,6 +91,61 @@ module.exports = {
     },
     pasados: [
       {
+        titulo: 'Foro: Propuestas programáticas de los candidatos a la Rectoría UPTC 2027-2030',
+        fechaTexto: '28 de octubre de 2026, 2:00 p. m. a 6:00 p. m.',
+        lugar: 'Auditorio Hunzahua, Edificio de Ingeniería',
+        detalle: 'Un espacio para el diálogo, la propuesta y la democracia universitaria, organizado por la Asociación de Economistas de la UPTC.',
+        imagen: { src: 'assets/img/eventos/afiche-foro-rectoria.webp', alt: 'Afiche del Foro de propuestas programáticas de los candidatos a la Rectoría UPTC 2027-2030, 28 de octubre de 2026', w: 1200, h: 1600 },
+      },
+      {
+        titulo: 'Seminario: ¿Economía política o política económica? De Smith a Keynes',
+        fechaTexto: '20 de octubre de 2026, 8:30 a. m. a 5:30 p. m.',
+        lugar: 'Paraninfo, UPTC Tunja',
+        detalle: 'Encuentro de egresados de la Escuela de Economía UPTC, con participación de ASOE. Conferencistas: Jorge Iván González, Danilo Torres, Álvaro Moreno y Adriana Francisca Salinas.',
+        imagen: { src: 'assets/img/eventos/afiche-seminario-smith-keynes.webp', alt: 'Afiche del Seminario ¿Economía política o política económica? De Smith a Keynes, 20 de octubre', w: 640, h: 1280 },
+        extrasTitulo: 'Fotos',
+        extras: [
+          foto('seminario-egresados-1', 1600, 748, 'Egresados de la Escuela de Economía posando juntos durante el seminario'),
+          foto('seminario-egresados-2', 1600, 748, 'Grupo de egresados durante el encuentro de la Escuela de Economía'),
+        ],
+      },
+      {
+        titulo: 'Exaltación honorífica a nuestro colega Raúl Cañón, miembro del Consejo Directivo',
+        fechaTexto: 'Fecha por confirmar',
+        lugar: 'Ceremonia «Edificando Futuro»',
+        detalle: 'Reconocimiento a nuestro colega y miembro del Consejo Directivo en la ceremonia «Edificando Futuro».',
+        imagen: foto('exaltacion-1', 1600, 748, 'Escenario de la ceremonia Edificando Futuro con el atril y los invitados'),
+        extrasTitulo: 'Fotos y video',
+        extras: [
+          foto('exaltacion-2', 1600, 748, 'Homenajeados en el escenario de la ceremonia Edificando Futuro'),
+          foto('exaltacion-3', 1600, 748, 'Homenajeados recibiendo sus reconocimientos'),
+          foto('exaltacion-4', 1600, 748, 'Participantes de la ceremonia Edificando Futuro en el escenario'),
+          foto('exaltacion-5', 748, 1600, 'Intervención desde el atril durante la ceremonia'),
+        ],
+        video: { src: 'assets/img/eventos/exaltacion-video.mp4', titulo: 'Video de la exaltación honorífica' },
+      },
+      {
+        titulo: 'Panel 1: Balance y perspectiva económica de Colombia y Boyacá frente a los desafíos',
+        fechaTexto: 'Fecha por confirmar',
+        lugar: '',
+        detalle: 'Panel de análisis sobre la situación económica de Colombia y Boyacá y los desafíos que enfrentan.',
+        imagen: foto('panel1-2', 1600, 748, 'Panelistas y moderador en la mesa del Panel 1, con la pancarta de bienvenida de ASOE'),
+        extrasTitulo: 'Fotos',
+        extras: [
+          foto('panel1-1', 1600, 748, 'Participante del público tomando la palabra durante el panel'),
+          foto('panel1-3', 1600, 748, 'Panelista presentando ante la mesa y el público'),
+        ],
+      },
+      {
+        titulo: 'Panel 2: Prospectiva económica y empresarial, qué viene para Colombia y Boyacá',
+        fechaTexto: 'Fecha por confirmar',
+        lugar: '',
+        detalle: 'Panel sobre las perspectivas económicas y empresariales para Colombia y Boyacá.',
+        imagen: foto('panel2-1', 1600, 748, 'Panelistas en la mesa del Panel 2, con la pancarta de ASOE'),
+        extrasTitulo: 'Fotos',
+        extras: [foto('panel2-2', 1600, 748, 'Panelistas conversando durante el Panel 2')],
+      },
+      {
         titulo: 'Panel de Integración Regional: explorando oportunidades de negocio',
         fechaTexto: '22 de julio de 2024, 2:00 p. m.',
         lugar: 'Auditorio Eduardo Caballero Calderón, Tunja',
@@ -129,6 +187,8 @@ module.exports = {
       { id: 'conferencia-11', w: 1600, h: 2400, alt: 'Asistente haciendo una pregunta con el micrófono' },
       { id: 'conferencia-12', w: 1600, h: 2400, alt: 'Asistente formulando una pregunta a los conferencistas' },
       { id: 'conferencia-13', w: 1600, h: 2400, alt: 'Participante del público tomando la palabra' },
+      { id: 'conferencia-14', w: 1600, h: 718, alt: 'Conferencistas y organizadores posando juntos al finalizar la conferencia' },
+      { id: 'conferencia-15', w: 1600, h: 718, alt: 'Grupo de conferencistas y organizadores en el auditorio' },
     ],
   },
 };

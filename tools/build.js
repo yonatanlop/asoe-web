@@ -79,7 +79,7 @@ const video = (e) => `
 
 const eventCard = (ev) => `
 <article class="card event">
-  <div class="card-img"><a href="${ev.imagen.src}" data-lightbox data-w="${ev.imagen.w}" data-h="${ev.imagen.h}" aria-label="Ampliar: ${esc(ev.imagen.alt)}">${picture(ev.imagen, { sizes: '(min-width: 800px) 33vw, 100vw' })}</a></div>
+  <div class="card-img"><a href="${ev.imagen.full || ev.imagen.src}" data-lightbox data-w="${ev.imagen.w}" data-h="${ev.imagen.h}" aria-label="Ampliar: ${esc(ev.imagen.alt)}">${picture(ev.imagen, { sizes: '(min-width: 800px) 33vw, 100vw' })}</a></div>
   <div class="card-body">
     <p class="meta">${esc(ev.fechaTexto)}${ev.lugar ? ` · ${esc(ev.lugar)}` : ''}</p>
     <h3>${esc(ev.titulo)}</h3>
@@ -281,10 +281,11 @@ ${pageHero('Eventos', 'Conferencias, paneles y simposios sobre los temas económ
       .filter((p) => p.extras)
       .map(
         (p) => `
-    <h3 class="sub">Ponencias: ${esc(p.titulo)}</h3>
+    <h3 class="sub">${esc(p.extrasTitulo || 'Ponencias')}: ${esc(p.titulo)}</h3>
     <ul class="gallery small">
-      ${p.extras.map((x) => `<li><figure><a href="${x.src}" data-lightbox data-w="${x.w}" data-h="${x.h}" aria-label="Ampliar: ${esc(x.alt)}">${picture(x, { sizes: '(min-width: 800px) 33vw, 100vw' })}</a><figcaption>${esc(x.texto)}</figcaption></figure></li>`).join('')}
-    </ul>`
+      ${p.extras.map((x) => `<li><figure><a href="${x.full || x.src}" data-lightbox data-w="${x.w}" data-h="${x.h}" aria-label="Ampliar: ${esc(x.alt)}">${picture(x, { sizes: '(min-width: 800px) 33vw, 100vw' })}</a>${x.texto ? `<figcaption>${esc(x.texto)}</figcaption>` : ''}</figure></li>`).join('')}
+    </ul>${p.video ? `
+    <video class="clip" controls preload="none" playsinline aria-label="${esc(p.video.titulo)}"><source src="${p.video.src}" type="video/mp4"></video>` : ''}`
       )
       .join('')}
   </div>
