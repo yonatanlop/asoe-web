@@ -12,6 +12,7 @@ const PREVIEW = process.env.PREVIEW === '1';
 const { site } = c;
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
+const badge = (on) => (PREVIEW && on ? ' <span class="badge">Por confirmar</span>' : '');
 const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // ---------- componentes ----------
@@ -199,6 +200,16 @@ ${pageHero('Nuestra historia', `Más de ${site.aniosTrayectoria} años de trayec
 
 <section class="section alt">
   <div class="wrap">
+    <h2>Misión y visión${badge(c.identidad.provisional)}</h2>
+    <div class="cards two">
+      <article class="card"><div class="card-body"><h3>Misión</h3><p>${esc(c.identidad.mision)}</p></div></article>
+      <article class="card"><div class="card-body"><h3>Visión</h3><p>${esc(c.identidad.vision)}</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
     <h2>Hitos</h2>
     <ol class="timeline">
       ${h.hitos.map((x) => `<li><time>${esc(x.fecha)}</time><p>${esc(x.texto)}</p></li>`).join('\n      ')}
@@ -229,7 +240,7 @@ ${pageHero('Junta directiva', 'Las personas que dirigen la Asociación y quienes
     <h2>Junta vigente</h2>
     ${
       c.junta.miembros.length
-        ? `<ul class="people">${c.junta.miembros.map((m) => `<li class="person">${m.foto ? `<img src="${m.foto}" alt="Fotografía de ${esc(m.nombre)}" width="240" height="240" loading="lazy">` : ''}<h3>${esc(m.nombre)}</h3><p>${esc(m.cargo)}</p></li>`).join('')}</ul>`
+        ? `<ul class="people">${c.junta.miembros.map((m) => `<li class="person">${m.foto ? `<img src="${m.foto}" alt="Fotografía de ${esc(m.nombre)}" width="240" height="240" loading="lazy">` : '<img class="avatar" src="assets/img/brand/apple-touch-icon.png" alt="" width="120" height="120" loading="lazy">'}<h3>${esc(m.nombre)}${badge(m.provisional)}</h3><p>${esc(m.cargo)}</p></li>`).join('')}</ul>`
         : '<p class="notice">Publicaremos aquí la composición de la junta directiva vigente.</p>'
     }
   </div>
@@ -309,7 +320,7 @@ ${pageHero('Contacto', 'Estamos en Tunja. Escríbenos o llámanos.')}
       <dl>
         <dt>Dirección</dt><dd>${esc(site.direccion)}<br><a href="${mapa}" rel="noopener" target="_blank">Ver en el mapa</a></dd>
         <dt>Teléfono</dt><dd><a href="tel:${site.telefonoLink}">${esc(site.telefono)}</a></dd>
-        ${site.email ? `<dt>Correo</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></dd>` : ''}
+        ${site.email ? `<dt>Correo</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a>${badge(site.emailProvisional)}</dd>` : ''}
         ${site.redes.map((r) => `<dt>${esc(r.nombre)}</dt><dd><a href="${esc(r.url)}" rel="noopener" target="_blank">${esc(r.url)}</a></dd>`).join('')}
       </dl>
     </div>
@@ -386,4 +397,6 @@ if (PREVIEW) {
   const urls = pages.map((p) => `  <url><loc>${site.url}/${p.file === 'index.html' ? '' : p.file}</loc><lastmod>${BUILD_DATE}</lastmod></url>`).join('\n');
   fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 }
+const pendientes = [site.emailProvisional && 'correo institucional', c.identidad.provisional && 'misión y visión', ...c.junta.miembros.filter((m) => m.provisional).map((m) => 'junta: ' + m.cargo)].filter(Boolean);
+if (pendientes.length) console.warn('⚠ Datos provisionales por confirmar (' + pendientes.length + '): ' + pendientes.join(', '));
 console.log(`Sitio generado en dist/ (${PREVIEW ? 'PRELIMINAR' : 'producción'}): ${pages.length} páginas + 404`);

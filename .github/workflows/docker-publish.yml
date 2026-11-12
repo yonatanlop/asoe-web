@@ -1,0 +1,51 @@
+name: Publicar imagen (preliminar)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            PREVIEW=1
+          tags: ghcr.io/${{ github.repository }}:latest
+
+  # Solo despliega cuando la variable del repositorio DEPLOY_ENABLED vale 'true'
+  # y existen los secrets ORACLE_VM_HOST, ORACLE_VM_USER y ORACLE_VM_SSH_KEY.
+  deploy:
+    needs: build
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Desplegar en la VM de Oracle
+        env:
+          HOST: ${{ secrets.ORACLE_VM_HOST }}
+          VM_USER: ${{ secrets.ORACLE_VM_USER }}
+          SSH_KEY: ${{ secrets.ORACLE_VM_SSH_KEY }}
+          DEPLOY_DIR: ${{ vars.DEPLOY_DIR || '/opt/asoe-web' }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key "$VM_USER@$HOST" "cd '$DEPLOY_DIR' && docker compose pull && docker compose up -d"

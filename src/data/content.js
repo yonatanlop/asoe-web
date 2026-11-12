@@ -13,8 +13,9 @@ module.exports = {
     direccion: 'Carrera 10 #19-21, Tunja, Boyacá',
     telefono: '(311) 844-8782',
     telefonoLink: '+573118448782',
-    // Cuando exista un correo institucional, se escribe aquí y el sitio muestra el formulario de contacto.
-    email: '',
+    // El sitio muestra el formulario de contacto cuando hay un correo configurado.
+    email: 'contacto@asoeconomistasuptc.org',
+    emailProvisional: true, // PENDIENTE: ASOE debe confirmar el correo institucional real
     redes: [], // { nombre: 'Facebook', url: 'https://...' }
     anioFundacion,
     aniosTrayectoria: new Date().getFullYear() - anioFundacion,
@@ -51,9 +52,23 @@ module.exports = {
     },
   },
 
+  // PENDIENTE: textos provisionales redactados a partir de la historia de ASOE; ASOE debe validarlos o reemplazarlos.
+  identidad: {
+    provisional: true,
+    mision: 'Agrupar y representar a los economistas egresados de la UPTC, promoviendo su desarrollo profesional y el análisis y debate de los temas económicos de la región y del país.',
+    vision: 'Ser reconocida como una organización gremial referente en el análisis económico de Boyacá y de Colombia, y un espacio de encuentro entre la academia, las entidades y los empresarios.',
+  },
+
   // Presidentes de los que se tiene registro. La junta vigente se agrega en `miembros` cuando ASOE la entregue.
   junta: {
-    miembros: [], // { nombre: '', cargo: '', foto: 'assets/img/junta/nombre.webp' }
+    // PENDIENTE: nombres de la junta vigente. Al recibirlos, se reemplaza cada 'Nombre por confirmar' y se quita provisional.
+    miembros: [
+      { nombre: 'Nombre por confirmar', cargo: 'Presidente(a)', provisional: true },
+      { nombre: 'Nombre por confirmar', cargo: 'Vicepresidente(a)', provisional: true },
+      { nombre: 'Nombre por confirmar', cargo: 'Secretario(a)', provisional: true },
+      { nombre: 'Nombre por confirmar', cargo: 'Tesorero(a)', provisional: true },
+      { nombre: 'Nombre por confirmar', cargo: 'Fiscal', provisional: true },
+    ], // { nombre, cargo, foto: 'assets/img/junta/nombre.webp', provisional }
     presidentes: [
       { nombre: 'Rafael Romero Suárez', periodo: 'Primer presidente, 1981' },
       { nombre: 'Efraín Rodríguez Rodríguez', periodo: 'Expresidente, 1992 – 1993' },
