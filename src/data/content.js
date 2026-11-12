@@ -81,8 +81,8 @@ module.exports = {
   eventos: {
     destacado: {
       titulo: 'Conferencia: Tasas de Interés e Inflación en Colombia',
-      fecha: '2026-08-26',
-      fechaTexto: '26 de agosto de 2026',
+      fecha: '2026-10-01',
+      fechaTexto: '1 de octubre de 2026',
       resumen:
         'Conferencia abierta sobre el comportamiento de las tasas de interés y la inflación en Colombia, con intervenciones de los conferencistas y espacio de preguntas del público.',
       youtubeId: 'XO2CCsw7VAo',
