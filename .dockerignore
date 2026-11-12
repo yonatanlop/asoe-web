@@ -1,0 +1,7 @@
+node_modules
+dist
+.git
+OneDrive_2026-11-12
+*.pptx
+*.docx
+tools/optimize*.js

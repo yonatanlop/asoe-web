@@ -1,0 +1,11 @@
+node_modules/
+dist/
+# Material original de ASOE y documentos comerciales: no se publican en el repositorio
+OneDrive_2026-11-12/
+*.pptx
+*.docx
+Cotizacion*
+contenido/
+.env
+*.pem
+*.key

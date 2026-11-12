@@ -1,0 +1,13 @@
+{
+  "name": "asoe-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web de la Asociación de Economistas de la UPTC (ASOE)",
+  "scripts": {
+    "build": "node tools/build.js",
+    "serve": "node tools/serve.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0"
+  }
+}
